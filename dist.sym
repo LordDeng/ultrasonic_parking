@@ -1,0 +1,103 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-022 MAIN.distancia
+023     lcd_init.i
+023     @PSTRINGCN7_637.P1
+023-024 @PRINTF_LU_637.P2
+023-024 get_dist.cm
+024-027 lcd_init.LCD_INIT_STRING
+024     @PSTRINGCN7_637.@SCRATCH1
+025     get_dist.@SCRATCH1
+025     @PSTRINGCN7_637.@SCRATCH2
+025     @PRINTF_LU_637.@SCRATCH1
+026     @PSTRINGCN7_637.@SCRATCH3
+026     @PRINTF_LU_637.@SCRATCH2
+027     @PSTRINGCN7_637.@SCRATCH4
+027     @PRINTF_LU_637.@SCRATCH3
+028     lcd_init.@SCRATCH1
+028     @PRINTF_LU_637.@SCRATCH4
+029     @PRINTF_LU_637.@SCRATCH5
+02A     @PRINTF_LU_637.@SCRATCH6
+02B     @PRINTF_LU_637.@SCRATCH7
+02C     lcd_putc.c
+02D     @delay_ms1.P1
+02D     lcd_gotoxy.x
+02E     lcd_gotoxy.y
+02F     lcd_gotoxy.address
+030     lcd_gotoxy.@SCRATCH1
+031     lcd_send_byte.address
+032     lcd_send_byte.n
+033     lcd_read_byte.low
+033     lcd_send_byte.@SCRATCH1
+034     lcd_read_byte.high
+034     lcd_send_nibble.n
+035     lcd_read_nibble.n
+035     lcd_read_byte.@SCRATCH1
+036     lcd_read_nibble.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+107.6   C1OUT
+108.6   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @const656.call
+00000E  @const663.call
+000018  @delay_ms1
+00002D  lcd_send_nibble
+000058  lcd_read_nibble
+000089  lcd_send_byte
+000091  lcd_read_byte
+0000E5  lcd_init
+00012B  get_dist
+000158  lcd_gotoxy
+00016A  lcd_putc
+000196  @PSTRINGCN7_637
+0001ED  @PRINTF_LU_637
+000250  @cinit1
+000250  MAIN
+000269  @cinit2
+
+Project Directory:
+    C:\Users\Luis\Documents\Proyectos PIC\distancia\
+
+Project Files:
+    dist.c                                                  [29-ene.-17 21:20  CRC=D398456E]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F886.h [12-nov.-13 14:35  CRC=E3D32390]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\lcd.c   [19-sep.-13 15:38  CRC=D1A6378A]
+
+Source signature=5AB7D812
+
+Units:
+    dist (main)
+
+Compiler Settings:
+    Processor:      PIC16F886
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   dist.xsym
+    Errors:      dist.err
+    Ext Symbols: dist.esym
+    INHX8:       dist.hex
+    Symbols:     dist.sym
+    List:        dist.lst
+    Debug/COFF:  dist.cof
+    Project:     dist.ccspjt
+    Call Tree:   dist.tre
+    Statistics:  dist.STA

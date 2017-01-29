@@ -1,0 +1,19 @@
+[PROJECT]
+Target=dist.hex
+Processor_Text=PIC16F886
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=dist.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[dist.c]
+Type=4
+[mru-list]
+1=dist.c
+[Opened Files]
+1=dist.c
+2=
+[Units]
+Count=1
+1=dist (main)
