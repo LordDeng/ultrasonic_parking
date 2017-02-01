@@ -3,20 +3,26 @@
 015     CCP_1_LOW
 015     CCP_1
 016     CCP_1_HIGH
-01B     CCP_2
 01B     CCP_2_LOW
+01B     CCP_2
 01C     CCP_2_HIGH
 020     @TRIS_C
 021-022 MAIN.distancia
-023     lcd_init.i
 023     @PSTRINGCN7_637.P1
-023-024 @PRINTF_LU_637.P2
 023-024 get_dist.cm
+023     lcd_init.i
+023-024 @PRINTF_LU_637.P1
+023     MAIN.@SCRATCH1
+023     @PSTRINGC7_637.@SCRATCH1
 024-027 lcd_init.LCD_INIT_STRING
+024     @PSTRINGC7_637.@SCRATCH2
 024     @PSTRINGCN7_637.@SCRATCH1
 025     get_dist.@SCRATCH1
+025     @PSTRINGC7_637.@SCRATCH3
 025     @PSTRINGCN7_637.@SCRATCH2
 025     @PRINTF_LU_637.@SCRATCH1
+026     get_dist.@SCRATCH2
+026     @PSTRINGC7_637.@SCRATCH4
 026     @PSTRINGCN7_637.@SCRATCH3
 026     @PRINTF_LU_637.@SCRATCH2
 027     @PSTRINGCN7_637.@SCRATCH4
@@ -36,8 +42,8 @@
 032     lcd_send_byte.n
 033     lcd_read_byte.low
 033     lcd_send_byte.@SCRATCH1
-034     lcd_read_byte.high
 034     lcd_send_nibble.n
+034     lcd_read_byte.high
 035     lcd_read_nibble.n
 035     lcd_read_byte.@SCRATCH1
 036     lcd_read_nibble.@SCRATCH1
@@ -48,36 +54,42 @@
 07A     @SCRATCH
 107.6   C1OUT
 108.6   C2OUT
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 
 ROM Allocation:
 000004  @const656.call
-00000E  @const663.call
-000018  @delay_ms1
-00002D  lcd_send_nibble
-000058  lcd_read_nibble
-000089  lcd_send_byte
-000091  lcd_read_byte
-0000E5  lcd_init
-00012B  get_dist
-000158  lcd_gotoxy
-00016A  lcd_putc
-000196  @PSTRINGCN7_637
-0001ED  @PRINTF_LU_637
-000250  @cinit1
-000250  MAIN
-000269  @cinit2
+00000D  @const660.call
+000017  @const666.call
+000021  @const668.call
+00002B  @const670.call
+000035  @const672.call
+00003F  @const674.call
+000049  @delay_ms1
+00005E  lcd_send_nibble
+000089  lcd_read_nibble
+0000BA  lcd_send_byte
+0000C2  lcd_read_byte
+000116  lcd_init
+00015C  get_dist
+000193  lcd_gotoxy
+0001A5  lcd_putc
+0001D1  @PSTRINGC7_637
+000229  @PSTRINGCN7_637
+000280  @PRINTF_LU_637
+0002E3  @cinit1
+0002E3  MAIN
+0002FC  @cinit2
 
 Project Directory:
     C:\Users\Luis\Documents\Proyectos PIC\distancia\
 
 Project Files:
-    dist.c                                                  [29-ene.-17 21:20  CRC=D398456E]
+    dist.c                                                  [01-feb.-17 00:43  CRC=AE2F02C4]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F886.h [12-nov.-13 14:35  CRC=E3D32390]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\lcd.c   [19-sep.-13 15:38  CRC=D1A6378A]
 
-Source signature=5AB7D812
+Source signature=354E9568
 
 Units:
     dist (main)

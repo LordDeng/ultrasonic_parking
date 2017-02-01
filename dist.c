@@ -22,8 +22,10 @@ int16 cm=0;
 on(trig);
 delay_us(50);
 off(trig);
-while(echo==0);
-while(echo==1)
+set_timer0(0);
+while(echo==0 && (get_timer0() < 255));
+set_timer0(0);
+while(echo==1 && (get_timer0() < 255))
 {
 cm++;
 delay_us(58);
@@ -34,33 +36,73 @@ return(cm);
 
 void main(void)
 {
-delay_ms(100);
+setup_timer_0 (RTCC_INTERNAL | RTCC_DIV_256);
 int16 distancia;
 lcd_init();
 while(true)
 {
 distancia=get_dist();
-if(distancia<=10)
+if(distancia==0)
 {
 printf(lcd_putc, "\f");
-printf(lcd_putc,"Distancia: %03lucm",distancia);
-on(buzz);
-delay_ms(100);
+printf(lcd_putc,"DISTANCIA NaN cm");
 off(buzz);
-delay_ms(100);
+delay_ms(50);
 }
-else if(distancia>10 && distancia<20)
+else if(distancia>0 && distancia<6)
 {
+off(buzz);
 printf(lcd_putc, "\f");
 printf(lcd_putc,"Distancia: %03lucm",distancia);
 on(buzz);
-delay_ms(100);
+delay_ms(50);
+}
+else if(distancia<=10 && distancia>6)
+{
+off(buzz);
+printf(lcd_putc, "\f");
+printf(lcd_putc,"Distancia: %03lucm",distancia);
+on(buzz);
+delay_ms(200);
 off(buzz);
 delay_ms(200);
 }
-else
+else if(distancia>10 && distancia<=20)
 {
-delay_ms(50);
+off(buzz);
+printf(lcd_putc, "\f");
+printf(lcd_putc,"Distancia: %03lucm",distancia);
+on(buzz);
+delay_ms(200);
+off(buzz);
+delay_ms(350);
+}
+else if(distancia>20 && distancia<=30)
+{
+off(buzz);
+printf(lcd_putc, "\f");
+printf(lcd_putc,"Distancia: %03lucm",distancia);
+on(buzz);
+delay_ms(200);
+off(buzz);
+delay_ms(550);
+}
+else if(distancia>30 && distancia<=40)
+{
+off(buzz);
+printf(lcd_putc, "\f");
+printf(lcd_putc,"Distancia: %03lucm",distancia);
+on(buzz);
+delay_ms(200);
+off(buzz);
+delay_ms(700);
+}
+else if(distancia>40)
+{
+off(buzz);
+printf(lcd_putc, "\f");
+printf(lcd_putc,"Distancia: %03lucm",distancia);
+delay_ms(100);
 }
 }
 }
